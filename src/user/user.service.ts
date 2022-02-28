@@ -24,7 +24,7 @@ export class UserService {
 
     return foundUserByEmail.length > 0 || foundUserByCpf.length > 0;
   }
-  private findUserByEmail(email: string) {
+  findUserByEmail(email: string) {
     return this.userRepository.find({ email });
   }
   private findUserByCpf(cpf: string) {
