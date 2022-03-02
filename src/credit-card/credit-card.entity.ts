@@ -19,7 +19,7 @@ class CreditCard {
   limit: number;
 
   @Column({ type: 'float', default: 50 })
-  available: number;
+  balance: number;
 
   @Column()
   number: string;

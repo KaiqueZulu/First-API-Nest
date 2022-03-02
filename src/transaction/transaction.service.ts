@@ -21,7 +21,7 @@ export class TransactionService {
     if (!creditCard) {
       throw new BadRequestException('Cartão de crédito não existe');
     }
-    const hasLimit = creditCard.available >= createTransactionDTO.value;
+    const hasLimit = creditCard.balance >= createTransactionDTO.value;
     if (!hasLimit) {
       throw new BadRequestException('Não possui limite disponivel');
     }
@@ -31,7 +31,7 @@ export class TransactionService {
       credit_card: creditCard,
     });
     this.creditCardRepository.update(creditCard.id, {
-      available: creditCard.available - createTransactionDTO.value,
+      balance: creditCard.balance - createTransactionDTO.value,
     });
     return this.transactionRepository.save(entity);
   }
